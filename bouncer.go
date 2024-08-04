@@ -604,6 +604,7 @@ func appsecQuery(bouncer *Bouncer, ip string, httpReq *http.Request) error {
 
 	res, err := bouncer.httpClient.Do(req)
 	if err != nil {
+  bouncer.log.Error(fmt.Sprintf("umreact: %s", err))
 		bouncer.log.Error("appsecQuery:unreachable")
 		if bouncer.appsecUnreachableBlock {
 			return fmt.Errorf("appsecQuery:unreachable %w", err)
